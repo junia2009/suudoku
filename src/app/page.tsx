@@ -361,17 +361,50 @@ export default function Home() {
               const idx = remainingNon1.indexOf(d);
               if (idx !== -1) remainingNon1.splice(idx, 1);
             }
-            for (let i = 0; i < unassignedCells.length; i++) {
-              if (i < remainingNon1.length) {
-                newBoard[row][unassignedCells[i].col] = parseInt(
-                  remainingNon1[i],
+
+            // 行全体の数字セルの最大暗さを基準にしきい値を計算
+            // "1"は細い数字で暗さが低い → maxDarkness * 0.6 未満なら "1" と推定
+            const maxDarkness = Math.max(
+              ...sortedCells.map(
+                (dc) => darkness.find((d) => d.col === dc.col)?.ratio ?? 0
+              )
+            );
+            const darkThreshold = maxDarkness * 0.6;
+
+            // 暗さ閾値で「1候補」と「非1候補」を分離
+            const likely1Cells: typeof unassignedCells = [];
+            const likelyNon1Cells: typeof unassignedCells = [];
+            for (const dc of unassignedCells) {
+              const r = darkness.find((d) => d.col === dc.col)?.ratio ?? 0;
+              if (r < darkThreshold) {
+                likely1Cells.push(dc);
+              } else {
+                likelyNon1Cells.push(dc);
+              }
+            }
+
+            // 非1候補は列順のまま、remainingNon1を順番に割当
+            // (列順 = sortedCellsでフィルタ済みなのでそのまま)
+            let non1Idx = 0;
+            for (const dc of likelyNon1Cells) {
+              if (non1Idx < remainingNon1.length) {
+                newBoard[row][dc.col] = parseInt(
+                  remainingNon1[non1Idx],
                   10
                 );
+                non1Idx++;
               } else {
-                newBoard[row][unassignedCells[i].col] = 1;
+                newBoard[row][dc.col] = 1;
               }
               console.log(
-                `  Cell [${row},${unassignedCells[i].col}]: fallback=${newBoard[row][unassignedCells[i].col]}`
+                `  Cell [${row},${dc.col}]: fallback=${newBoard[row][dc.col]} (dark=${darkness.find((d) => d.col === dc.col)?.ratio.toFixed(3)})`
+              );
+            }
+            // 1候補のセルは"1"を割当
+            for (const dc of likely1Cells) {
+              newBoard[row][dc.col] = 1;
+              console.log(
+                `  Cell [${row},${dc.col}]: fallback=1 (dark=${darkness.find((d) => d.col === dc.col)?.ratio.toFixed(3)}, likely1)`
               );
             }
           }
