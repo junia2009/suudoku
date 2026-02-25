@@ -245,6 +245,27 @@
   transition: width 0.3s ease;
 }
 
+/* ===== Utility ===== */
+.hidden {
+  display: none;
+}
+
+.buttonRowCenter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.actionRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 500px) {
   .page {

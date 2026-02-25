@@ -588,8 +588,9 @@ export default function Home() {
           ref={fileInputRef}
           type="file"
           accept="image/*"
-          style={{ display: "none" }}
+          className={styles.hidden}
           onChange={handleFileChange}
+          aria-label="数独画像を選択"
         />
 
         {/* カメラプレビュー */}
@@ -601,11 +602,8 @@ export default function Home() {
               autoPlay
               playsInline
             />
-            <canvas ref={canvasRef} style={{ display: "none" }} />
-            <div
-              className={styles.buttonRow}
-              style={{ marginTop: 10, justifyContent: "center" }}
-            >
+            <canvas ref={canvasRef} className={styles.hidden} />
+            <div className={styles.buttonRowCenter}>
               <button className={styles.btnSuccess} onClick={handleTakePhoto}>
                 📸 撮影
               </button>
@@ -620,6 +618,7 @@ export default function Home() {
         {ocrProgress !== null && (
           <div>
             <div className={styles.progressBar}>
+              {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, react/forbid-dom-props */}
               <div
                 className={styles.progressFill}
                 style={{ width: `${ocrProgress}%` }}
@@ -664,16 +663,14 @@ export default function Home() {
                   onChange={(e) => handleCellChange(i, j, e.target.value)}
                   className={cellClassName(i, j)}
                   readOnly={solved}
+                  aria-label={`セル ${i + 1}行${j + 1}列`}
                 />
               ))
             )}
           </div>
         </div>
 
-        <div
-          className={styles.buttonRow}
-          style={{ marginTop: 16, justifyContent: "center" }}
-        >
+        <div className={styles.actionRow}>
           <button
             className={styles.btnSuccess}
             onClick={handleSolve}
