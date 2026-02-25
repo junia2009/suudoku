@@ -1,0 +1,273 @@
+/* ===== Page Container ===== */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px 16px 48px;
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 6px;
+}
+
+/* ===== Card ===== */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  padding: 28px 24px;
+  max-width: 480px;
+  width: 100%;
+}
+
+.card + .card {
+  margin-top: 20px;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #5b3cc4;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== Buttons ===== */
+.buttonRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.btnPrimary,
+.btnSecondary,
+.btnDanger,
+.btnSuccess {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btnPrimary:active,
+.btnSecondary:active,
+.btnDanger:active,
+.btnSuccess:active {
+  transform: scale(0.96);
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.55);
+}
+
+.btnSecondary {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(245, 87, 108, 0.35);
+}
+
+.btnSecondary:hover {
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.5);
+}
+
+.btnDanger {
+  background: #ff6b6b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.35);
+}
+
+.btnDanger:hover {
+  box-shadow: 0 6px 18px rgba(255, 107, 107, 0.5);
+}
+
+.btnSuccess {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #1a1a2e;
+  box-shadow: 0 4px 14px rgba(67, 233, 123, 0.35);
+}
+
+.btnSuccess:hover {
+  box-shadow: 0 6px 20px rgba(67, 233, 123, 0.5);
+}
+
+.btnDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ===== Sudoku Grid ===== */
+.gridWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  border: 3px solid #5b3cc4;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 378px;
+  aspect-ratio: 1 / 1;
+}
+
+.cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 1px solid #d4d0e8;
+  background: #fff;
+  color: #333;
+  outline: none;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.cell:focus {
+  background: #e8e0ff;
+  z-index: 1;
+}
+
+/* 3x3 ブロック境界線 */
+.cellBorderRight {
+  border-right: 2.5px solid #5b3cc4;
+}
+
+.cellBorderBottom {
+  border-bottom: 2.5px solid #5b3cc4;
+}
+
+/* 解答済みセル */
+.cellSolved {
+  background: #f0fff4;
+  color: #38a169;
+}
+
+/* 元の入力セル */
+.cellOriginal {
+  color: #333;
+  font-weight: 800;
+}
+
+/* ===== Camera / Image Preview ===== */
+.previewArea {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 280px;
+  border-radius: 12px;
+  border: 2px solid #e0d6f5;
+}
+
+.videoPreview {
+  max-width: 100%;
+  max-height: 280px;
+  border-radius: 12px;
+  border: 2px solid #e0d6f5;
+}
+
+/* ===== Messages ===== */
+.errorMsg {
+  color: #e53e3e;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.successMsg {
+  color: #38a169;
+  font-weight: 700;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.infoMsg {
+  color: #667eea;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ===== Progress Bar ===== */
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: #e0d6f5;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 500px) {
+  .page {
+    padding: 16px 10px 32px;
+  }
+
+  .card {
+    padding: 20px 14px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .cell {
+    font-size: 1rem;
+  }
+
+  .btnPrimary,
+  .btnSecondary,
+  .btnDanger,
+  .btnSuccess {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
