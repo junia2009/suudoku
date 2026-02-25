@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "cross-env GITHUB_PAGES=true next build && gh-pages -d out"
+    "deploy": "cross-env GITHUB_PAGES=true next build && gh-pages -d out --dotfiles"
   },
   "dependencies": {
     "cross-env": "^10.1.0",
