@@ -1,0 +1,3 @@
+:HL["/suudoku/_next/static/chunks/69eae75d8d1405fc.css","style"]
+:HL["/suudoku/_next/static/chunks/bd43ef47d8e1ba72.css","style"]
+0:{"buildId":"G2re7Kabddzb-KYCouXlt","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
